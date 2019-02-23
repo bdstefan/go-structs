@@ -2,10 +2,10 @@ package main
 
 import "testing"
 
-func TestNewPerson(t *testing.T)  {
-	const firstName string = "Joe"
-	const lastName string = "Doe"
+const firstName string = "Joe"
+const lastName string = "Doe"
 
+func TestNewPerson(t *testing.T) {
 	p := newPerson(firstName, lastName)
 
 	if p.firstName != firstName {
@@ -14,5 +14,16 @@ func TestNewPerson(t *testing.T)  {
 
 	if p.lastName != lastName {
 		t.Errorf("Expected person to have last name %v, got %v", lastName, p.lastName)
+	}
+}
+
+func TestUpdateName(t * testing.T) {
+	const newName string = "Jimmy"
+
+	p := newPerson(firstName, lastName)
+	p.updateName(newName)
+
+	if p.firstName != newName {
+		t.Errorf("Expected person to have new name %v, got %v", newName, p.firstName)
 	}
 }

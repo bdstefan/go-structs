@@ -19,7 +19,7 @@ func (p *person) updateName(newFirstName string)  {
 	(*p).firstName = newFirstName
 }
 
-func (p *person) attachContactInfo (c contactInfo) {
+func (p *person) attachContactInfo(c contactInfo) {
 	(*p).contactInfo = c
 }
 

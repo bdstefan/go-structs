@@ -5,9 +5,9 @@ import "testing"
 const firstName string = "Joe"
 const lastName string = "Doe"
 
-func TestNewPerson(t *testing.T) {
-	p := newPerson(firstName, lastName)
+var p = newPerson(firstName, lastName)
 
+func TestNewPerson(t *testing.T) {
 	if p.firstName != firstName {
 		t.Errorf("Expected person to have first name %v, got %v", firstName, p.firstName)
 	}
@@ -19,11 +19,19 @@ func TestNewPerson(t *testing.T) {
 
 func TestUpdateName(t * testing.T) {
 	const newName string = "Jimmy"
-
-	p := newPerson(firstName, lastName)
 	p.updateName(newName)
 
 	if p.firstName != newName {
 		t.Errorf("Expected person to have new name %v, got %v", newName, p.firstName)
+	}
+}
+
+func TestAttachContact(t *testing.T) {
+	c := newContact("joe@doe.me", 500600)
+
+	p.attachContactInfo(c)
+
+	if p.contactInfo != c {
+		t.Errorf("Expected person to have contact %+v, got %+v", c, p.contactInfo)
 	}
 }
